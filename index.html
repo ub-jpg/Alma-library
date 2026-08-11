@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Alma Library</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f7f5f0;
+  color: #252421;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 60px 24px;
+}
+
+header {
+  margin-bottom: 50px;
+}
+
+h1 {
+  font-family: Georgia, serif;
+  font-size: 48px;
+  font-weight: 400;
+  margin: 0 0 10px;
+}
+
+.subtitle {
+  color: #77736c;
+  font-size: 17px;
+}
+
+.search {
+  width: 100%;
+  margin-top: 35px;
+  padding: 16px 20px;
+  border: 1px solid #d8d4cc;
+  border-radius: 14px;
+  background: #fff;
+  font-size: 16px;
+  outline: none;
+}
+
+.filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 22px 0 45px;
+}
+
+.filter {
+  padding: 8px 13px;
+  border: 1px solid #d7d2c9;
+  border-radius: 20px;
+  background: transparent;
+  cursor: pointer;
+  color: #55514a;
+}
+
+.filter.active {
+  background: #292824;
+  color: white;
+}
+
+.book {
+  display: grid;
+  grid-template-columns: 60px 1.1fr 1.5fr;
+  gap: 24px;
+  padding: 28px 0;
+  border-top: 1px solid #dedad2;
+}
+
+.number {
+  font-family: Georgia, serif;
+  color: #aaa59c;
+  font-size: 14px;
+}
+
+.book h2 {
+  font-family: Georgia, serif;
+  font-weight: 400;
+  font-size: 23px;
+  margin: 0 0 6px;
+}
+
+.author {
+  color: #817d76;
+  font-size: 14px;
+  margin-bottom: 13px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  border: 1px solid #d8d3ca;
+  padding: 5px 9px;
+  border-radius: 12px;
+  font-size: 12px;
+  color: #777169;
+}
+
+.description {
+  color: #5e5a54;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+.status {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 12px;
+  color: #918b82;
+}
+
+@media (max-width: 700px) {
+
+  .container {
+    padding: 38px 20px;
+  }
+
+  h1 {
+    font-size: 39px;
+  }
+
+  .book {
+    grid-template-columns: 32px 1fr;
+  }
+
+  .description {
+    grid-column: 2;
+    margin-top: -8px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+  <h1>Alma Library</h1>
+  <div class="subtitle">
+    Книги, идеи и тексты, к которым хочется возвращаться.
+  </div>
+
+  <input
+    class="search"
+    id="search"
+    placeholder="Поиск по книгам, авторам и темам…"
+  >
+
+  <div class="filters">
+    <button class="filter active" data-filter="all">Все</button>
+    <button class="filter" data-filter="psychology">Психология</button>
+    <button class="filter" data-filter="myth">Мифология</button>
+    <button class="filter" data-filter="consciousness">Сознание</button>
+    <button class="filter" data-filter="philosophy">Философия</button>
+    <button class="filter" data-filter="work">Работа & AI</button>
+  </div>
+</header>
+
+<main id="library">
+
+<div class="book" data-category="psychology">
+  <div class="number">01</div>
+
+  <div>
+    <h2>Душевные омуты</h2>
+    <div class="author">Джеймс Холлис</div>
+
+    <div class="tags">
+      <span class="tag">Психология</span>
+      <span class="tag">Юнг</span>
+      <span class="tag">Тень</span>
+    </div>
+  </div>
+
+  <div class="description">
+    Исследование внутренних состояний, тревоги,
+    одиночества и тех частей психики, которые мы
+    предпочитаем не замечать.
+
+    <div class="status">Хочу прочитать</div>
+  </div>
+</div>
+
+
+<div class="book" data-category="myth">
+  <div class="number">02</div>
+
+  <div>
+    <h2>Одиссея</h2>
+    <div class="author">Гомер</div>
+
+    <div class="tags">
+      <span class="tag">Мифология</span>
+      <span class="tag">Архетипы</span>
+      <span class="tag">Путешествие</span>
+    </div>
+  </div>
+
+  <div class="description">
+    Не просто приключение Одиссея, а история о возвращении
+    к себе, искушении, идентичности и цене знания.
+
+    <div class="status">Исследую</div>
+  </div>
+</div>
+
+
+<div class="book" data-category="consciousness">
+  <div class="number">03</div>
+
+  <div>
+    <h2>Активное сознание</h2>
+    <div class="author">Олег Бахтияров</div>
+
+    <div class="tags">
+      <span class="tag">Сознание</span>
+      <span class="tag">Внимание</span>
+      <span class="tag">Практика</span>
+    </div>
+  </div>
+
+  <div class="description">
+    Работа с вниманием и состояниями сознания.
+    Практический взгляд на управление восприятием
+    и собственной психической деятельностью.
+
+    <div class="status">В списке</div>
+  </div>
+</div>
+
+
+<div class="book" data-category="psychology">
+  <div class="number">04</div>
+
+  <div>
+    <h2>Синдром предков</h2>
+    <div class="author">Анн Анселин Шутценбергер</div>
+
+    <div class="tags">
+      <span class="tag">Семья</span>
+      <span class="tag">Психология</span>
+      <span class="tag">Поколения</span>
+    </div>
+  </div>
+
+  <div class="description">
+    Исследование семейных историй и повторяющихся
+    сценариев между поколениями.
+
+    <div class="status">Хочу прочитать</div>
+  </div>
+</div>
+
+
+<div class="book" data-category="philosophy">
+  <div class="number">05</div>
+
+  <div>
+    <h2>Год жизни</h2>
+    <div class="author">Стивен Левин</div>
+
+    <div class="tags">
+      <span class="tag">Жизнь</span>
+      <span class="tag">Смерть</span>
+      <span class="tag">Присутствие</span>
+    </div>
+  </div>
+
+  <div class="description">
+    Эксперимент: прожить год так, словно он последний.
+    Практика присутствия и пересмотра того,
+    чему мы действительно хотим отдавать свою жизнь.
+
+    <div class="status">В списке</div>
+  </div>
+</div>
+
+</main>
+
+</div>
+
+
+<script>
+
+const search = document.getElementById("search");
+const books = document.querySelectorAll(".book");
+const filters = document.querySelectorAll(".filter");
+
+let activeFilter = "all";
+
+function updateBooks() {
+
+  const query = search.value.toLowerCase();
+
+  books.forEach(book => {
+
+    const text = book.innerText.toLowerCase();
+    const category = book.dataset.category;
+
+    const matchesSearch = text.includes(query);
+    const matchesFilter =
+      activeFilter === "all" || category === activeFilter;
+
+    book.style.display =
+      matchesSearch && matchesFilter ? "grid" : "none";
+
+  });
+}
+
+search.addEventListener("input", updateBooks);
+
+filters.forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    filters.forEach(b => b.classList.remove("active"));
+    button.classList.add("active");
+
+    activeFilter = button.dataset.filter;
+
+    updateBooks();
+  });
+
+});
+
+</script>
+
+</body>
+</html>
